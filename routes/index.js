@@ -28,7 +28,7 @@ router.get('/*', function(req, res, next) {
 		if (content.indexOf('econGraphsApp') !== -1) {
 			legacy = true;
 		}
-		if (content.indexOf('MyApp')) {
+		if (content.indexOf('MyApp') !== -1) {
 			edge = true;
 		}
 
