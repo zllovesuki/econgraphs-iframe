@@ -9,10 +9,10 @@ var fs = require('fs');
 
 superagentPromisePlugin.Promise = Promise;
 
-var bare = '<!DOCTYPE html><html><head>%s<link href="/static/css/bootstrap.min.css" rel="stylesheet"><link href="/static/css/katex.min.css" rel="stylesheet"></head><body>%s</body><html>';
+var bare = '<!DOCTYPE html><html><head><link href="/static/css/bootstrap.min.css" rel="stylesheet">%s</head><body>%s</body></html>';
 var legacyLib = '<script src="/static/js/archives/head.js"></script><link href="/static/css/style.css" rel="stylesheet" />';
-var modernLib = '<link href="/static/css/econ-graphs-v2.css" rel="stylesheet"/>';
-var edgeLib = '<link href="/static/css/capm-style.css" rel="stylesheet"/><script src="/static/js/archives/kg-head.js"></script><script src="/static/js/archives/capm-v3.js"></script>';
+var modernLib = '<link href="/static/css/katex.min.css" rel="stylesheet"><link href="/static/css/econ-graphs-v2.css" rel="stylesheet"/>';
+var edgeLib = '<link href="/static/css/capm-style.css" rel="stylesheet"/>';
 var legacy, edge;
 
 router.get('/*', function(req, res, next) {
@@ -31,7 +31,7 @@ router.get('/*', function(req, res, next) {
 		if (content.indexOf('MyApp') !== -1) {
 			edge = true;
 		}
-
+		console.log(legacy, edge);
 		if (legacy) {
 			body = util.format(bare, legacyLib, body);
 		}else if (edge) {
@@ -50,7 +50,7 @@ router.get('/*', function(req, res, next) {
 			$('html').attr('ng-app', 'econGraphsApp');
 			$('body').attr('ng-controller', 'Controller');
 		}else if (edge) {
-			$('html').attr('ng-app', 'myApp');
+			$('html').attr('ng-app', 'MyApp');
 		}else{
 			$('html').attr('ng-app', 'KineticGraphs');
 		}
