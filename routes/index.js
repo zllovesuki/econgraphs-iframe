@@ -44,6 +44,8 @@ router.get('/*', function(req, res, next) {
 		$('div').filter(function() {
 			return !!$(this).css('height');
 		}).remove();
+		$('div').removeClass('mainPage')
+
 		$('body').find('nav').remove();
 
 		if (legacy) {
