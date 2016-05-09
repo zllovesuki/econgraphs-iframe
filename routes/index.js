@@ -31,7 +31,7 @@ router.get('/*', function(req, res, next) {
 		if (content.indexOf('MyApp') !== -1) {
 			edge = true;
 		}
-		console.log(legacy, edge);
+
 		if (legacy) {
 			body = util.format(bare, legacyLib, body);
 		}else if (edge) {
