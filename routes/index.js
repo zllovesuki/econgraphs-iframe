@@ -16,7 +16,7 @@ router.get('/*', function(req, res, next) {
 	.use(superagentPromisePlugin)
 	.then(function (re) {
 		var content = re.text;
-		content.replace('col-md-', 'col-xs-');
+		content.replace(/col-md-/g, 'col-xs-');
 		_$ = cheerio.load(content);
 		var body = _$('body').html();
 		body = util.format(bare, body);
